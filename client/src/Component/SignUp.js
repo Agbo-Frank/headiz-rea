@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useDispatch,useSelector } from "react-redux";
 import { registerUser } from '../redux/action/userAction'
 import Categories from './Categories';
+import { useHistory } from 'react-router'
 import Header from './Header';
 
 
@@ -20,6 +21,7 @@ function SignUp() {
     var [showCategory, setShowCategory] = useState('none')
 
     var dispatch = useDispatch()
+    var history = useHistory()
 
     var user = useSelector(state => state.user.user)
     var error = useSelector(state => state.error.errorMsg)
@@ -44,7 +46,7 @@ function SignUp() {
             email: email,
             password: password
         }
-        dispatch(registerUser(doc))
+        dispatch(registerUser(doc, history))
 
         setEmail('')
         setLname('')

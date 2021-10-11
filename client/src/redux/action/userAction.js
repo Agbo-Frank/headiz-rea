@@ -64,7 +64,7 @@ export function resetPassword(doc){
             })
     }
 }
-export function registerUser(doc){
+export function registerUser(doc, history){
     return function(dispatch){
 
         var body = JSON.stringify(doc)
@@ -76,6 +76,7 @@ export function registerUser(doc){
                 payload: res.data
             })
             dispatch(clearError())
+            history.push('/DashBoard')
           })
           .catch(err => {
               dispatch({
@@ -85,7 +86,7 @@ export function registerUser(doc){
           })
     }
 }
-export function registerVendor(doc){
+export function registerVendor(doc, history){
     return function(dispatch){
 
         var body = JSON.stringify(doc)
@@ -96,6 +97,7 @@ export function registerVendor(doc){
                 type: 'SIGNUP_SUCCESS',
                 payload: res.data
             })
+            history.push('/vendor')
             dispatch(clearError())
           })
           .catch(err => {

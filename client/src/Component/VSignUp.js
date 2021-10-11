@@ -3,6 +3,7 @@ import { Breadcrums, MainContent, SideBar, StyledBody } from "./styles/StyledBod
 import { StyleInput,InputGroup, PasswordInput, FormButton, Form, } from "./styles/FormStyling"
 import { MdVisibility, MdVisibilityOff } from "react-icons/md";
 import { useState } from "react";
+import { useHistory } from "react-router";
 import Categories from './Categories';
 import Header from './Header';
 import { useDispatch,useSelector } from "react-redux";
@@ -24,6 +25,7 @@ function VSignUp() {
     var user = useSelector(state => state.user.user)
 
     var dispatch = useDispatch()
+    var history = useHistory()
 
     const showPassword = (e) => {
         if(pw === 'password'){
@@ -48,7 +50,7 @@ function VSignUp() {
             shopUrl: shopUrl,
             password: password
         }
-        dispatch(registerVendor(doc))
+        dispatch(registerVendor(doc, history))
 
         setEmail('')
         setLname('')

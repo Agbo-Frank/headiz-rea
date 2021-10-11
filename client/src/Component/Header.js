@@ -1,7 +1,6 @@
 import { Logo, Navs, Search, StyledHeader } from "./styles/StyledHeader"
 import { FaSearch,FaRegUserCircle } from "react-icons/fa";
 import { MdLocalGroceryStore } from "react-icons/md";
-import { logOut } from '../redux/action/userAction'
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect } from "react"
 import { BsQuestionCircle, BsBoxArrowInLeft, BsBoxArrowLeft } from "react-icons/bs";
@@ -44,7 +43,7 @@ function Header({displayCategories, user }){
                                         </Link>
                                     </li>
                                     <li >
-                                        <Link to="/order">
+                                        <Link onClick={() => dispatch({type: 'LOGOUT'})}>
                                             <BsBoxArrowLeft style={{color: "White", fontSize: "20px", marginRight: "10px"}}/>
                                             Log Out
                                         </Link>
@@ -96,7 +95,7 @@ function Header({displayCategories, user }){
                                     Help
                                 </Link>
                             </li>
-                            <li onClick = {() => dispatch(logOut())}>
+                            <li>
                                 <Link to="/signup">
                                     <FaRegUserCircle style={{color: "White", fontSize: "20px", marginRight: "10px"}}/>
                                     SignUp

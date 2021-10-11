@@ -152,12 +152,11 @@ function VSignUp() {
                                         </div>
                                         <div>
                                             <div className="error pw">{error &&  error.password }</div>
-                                            <a>Forget Password</a>
                                         </div>
                                     </PasswordInput>
                                 </label>
                             </StyleInput>
-                            <StyleInput>
+                            {/* <StyleInput>
                                 <label>
                                     <p> Confirm Password</p>
                                     <PasswordInput>
@@ -170,7 +169,7 @@ function VSignUp() {
                                         </div>
                                     </PasswordInput>
                                 </label>
-                            </StyleInput>
+                            </StyleInput> */}
                     </InputGroup>
                     <FormButton>
                         <button type="submit">Sign Up</button>

@@ -4,7 +4,6 @@ import { MdDashboard } from "react-icons/md";
 import { Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch } from "react-redux";
-import { logOut } from '../redux/action/userAction'
 
 function Menu({ active, view }){
     var dispatch = useDispatch()
@@ -19,7 +18,7 @@ function Menu({ active, view }){
             <li><Link to="order" className={active === 'order' && 'active'}>order</Link></li>
             <li><Link to="saveditems" className={active === 'Saved item' && 'active'}>Saved item</Link></li>
             <li><Link to="cart" className={active === 'cart' && 'active'}>Cart</Link></li>
-            <li><Link onClick = {() => dispatch(logOut())} className={active === 'Log Out' && 'active'}>Log Out</Link></li></>}
+            <li><Link onClick={() => dispatch({type: 'LOGOUT'})} className={active === 'Log Out' && 'active'}>Log Out</Link></li></>}
         </StyledMenu>
     )
 }

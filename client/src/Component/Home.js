@@ -12,6 +12,7 @@ import { addToCart } from '../redux/action/cartAction'
 import {Image} from 'cloudinary-react';
 import { loadUser } from "../redux/action/userAction"
 import MySlider from "./MySlider"
+import { Link } from "react-router-dom"
 import { useState } from 'react';
 import Carousel from "./Carousel"
 
@@ -79,19 +80,19 @@ function Home(){
                     ))
                 }
             </div>
-            <button className="ripple">See More</button>
+            <button className="ripple" onClick={() => history.push("/products/hairBundle")}>See More</button>
         </section>
         <div className="products">
             <div className="text">
                 <strong>Hair Care Products</strong>
-                <p>View All &rarr;</p>
+                <Link to="/products/hairCare">View All &rarr;</Link>
             </div>
             <Carousel items={items} user={user}/>
         </div>
         <div className="products">
             <div className="text">
                 <strong>Beauty Products</strong>
-                <p>View All &rarr;</p>
+                <Link to="/products/beautyShop">View All &rarr;</Link>
             </div>
             <Carousel items={items} user={user}/>
         </div>

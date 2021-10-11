@@ -64,11 +64,6 @@ export function resetPassword(doc){
             })
     }
 }
-export function logOut(){
-    return {
-        type: ' LOGOUT'
-    }
-}
 export function registerUser(doc){
     return function(dispatch){
 

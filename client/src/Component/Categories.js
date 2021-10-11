@@ -13,6 +13,7 @@ function Categories({display, user}){
                 <li><Link to="/products/beautyShop">BEAUTY SHOP</Link></li>
                 {!user && <li><Link to="/signup">Sign Up</Link></li>}
             </ul>
+            {/* <Link { user ? onClick=dispatch({type: 'LOGOUT'}) : to="sell"}>{user ? 'Log Out' : 'Sell'}</Link> */}
             <Link to="sell">{user ? 'Log Out' : 'Sell'}</Link>
         </StyledCategories>
         

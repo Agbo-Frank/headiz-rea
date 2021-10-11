@@ -1,6 +1,8 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory } from "react-router"
+import Categories from './Categories';
+import Header from './Header';
 import { getProduct } from "../redux/action/productAction"
 import { Price } from "./styles/StyledBody"
 import { BsHeart, BsHeartFill } from "react-icons/bs";
@@ -9,6 +11,8 @@ import { addToCart } from '../redux/action/cartAction'
 import {Image} from 'cloudinary-react';
 import { loadUser } from "../redux/action/userAction"
 import MySlider from "./MySlider"
+import { useState } from 'react';
+import Carousel from "./Carousel"
 
 
 function Home(){
@@ -24,8 +28,20 @@ function Home(){
         dispatch(getProduct())
     }, [dispatch])
 
+    var [showCategory, setShowCategory] = useState('none')
+    function handleClick(){
+        if(showCategory === 'none'){
+            setShowCategory('block')
+        }
+        else(
+            setShowCategory('none')
+        )
+    }
+
     return(
         <div>
+            <Header displayCategories={handleClick} user={user}/>
+            <Categories display={showCategory} user={user}/>
             <MySlider items={items}/>
             <div className="search">
                 <span class="material-icons">search</span>
@@ -50,7 +66,7 @@ function Home(){
                                 </span>
                                 <Image cloudName="agbofrank" publicId={item.file_id} onClick={() => history.push(`/product/${item._id}`)}/>
                                 <a onClick={() => dispatch(addToCart(item._id, item.price, item.category, quantity, item.file_id, item.name))} className="a">Add To Cart</a>
-                                </div>
+                            </div>
                                 <div>
                                 <small>{item.description}</small>
                                 <Price>
@@ -64,6 +80,20 @@ function Home(){
             </div>
             <button className="ripple">See More</button>
         </section>
+        <div className="products">
+            <div className="text">
+                <strong>Hair Care Products</strong>
+                <p>View All &rarr;</p>
+            </div>
+            <Carousel items={items} user={user}/>
+        </div>
+        <div className="products">
+            <div className="text">
+                <strong>Beauty Products</strong>
+                <p>View All &rarr;</p>
+            </div>
+            <Carousel items={items} user={user}/>
+        </div>
     </div>        
     )
 }

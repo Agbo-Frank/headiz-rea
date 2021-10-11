@@ -23,14 +23,47 @@ function Slide({ item }){
     )
 }
 
+function Indicators(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, 
+        padding: "5px", 
+        borderRadius: "50%"}}
+      onClick={onClick}
+    />
+  );
+}
+
+
 export default function MySlider({ items }) {
     const settings = {
+      customPaging: function(i) {
+        return (
+          <div style = {{
+            cursor: "pointer",
+            userSelect: "none",
+            width: "10px",
+            height: "10px",
+            backgroundColor: "grey",
+            borderRadius: "50%",
+            marginRight: "2px",
+          }}></div>
+        );
+      },
+
       dots: true,
       infinite: true,
       lazyLoad: true,
       speed: 500,
+      autoplay: true,
+      autoplaySpeed: 8000,
+      cssEase: "linear",
       slidesToShow: 1,
-      slidesToScroll: 1
+      slidesToScroll: 1,
+      nextArrow: <Indicators />,
+      prevArrow: <Indicators />
     };
     const styles = {
       position: "relative",
@@ -43,7 +76,7 @@ export default function MySlider({ items }) {
     }
     return (
       <div>
-        <Slider {...settings} style={...styles}>
+        <Slider {...settings} style={styles}>
           {
             items.map(item => (
               <div key={item._id}>

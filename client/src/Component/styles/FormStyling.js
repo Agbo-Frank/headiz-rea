@@ -113,7 +113,17 @@ export const InputGroup = styled.div`
     gap: 30px;
 
     div{
-        flex: 50%
+        flex: 50%;
+    }
+
+    @media screen and (max-width: 830px){
+        width: 100%;
+        flex-flow: column;
+        gap: 0;
+        
+        > div{
+            flex: 100%;
+        }
     }
 `
 

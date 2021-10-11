@@ -36,7 +36,7 @@ export const StyledCategories = styled.div`
         text-align: center;
     }
     @media screen and (max-width: 830px){
-            display: block;
+            display: ${({ display }) => display};
             width: 100%;
             position: absolute;
             top: 70;
@@ -115,4 +115,8 @@ export const StyledMenu = styled.ul`
     li:hover a{
         color: var(--footer_color);
     }
+
+    @media screen and (max-width: 830px){
+        display: ${({active}) => active === 'dashboard' &&  "none" };
+    }  
 `

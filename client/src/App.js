@@ -23,31 +23,25 @@ import Order from './Component/Orders';
 import { useState } from 'react';
 
 function App() {
-    var [showCategory, setShowCategory] = useState(true)
-    
   return (
     <Router>
       <div className="App">
-        <Header displayCategories={() => setShowCategory(!showCategory)}/>
         <Switch>
           <Route exact path="/">
-              {showCategory && <Categories />}
               <Home />
+              <Footer/>
           </Route>
           <Route path="/DashBoard">
-              {showCategory && <Categories />}
               <UDashBoard/>
           </Route>
           <Route path="/Upload">
               <UploadProduct/>
           </Route>
           <Route path="/Billing">
-              {showCategory && <Categories />}
               <Billing/>
               <Footer/>
           </Route>
           <Route path="/cart">
-              {showCategory && <Categories />}
               <Cart/>
               <Footer/>
           </Route>
@@ -59,7 +53,6 @@ function App() {
               <Footer/>
           </Route>
           <Route path="/products/:category">
-              {showCategory && <Categories />}
               <Products/>
               <Footer/>
           </Route>
@@ -70,31 +63,24 @@ function App() {
               <Order/>
           </Route>
           <Route path="/contact">
-              {showCategory && <Categories />}
               <Contact/>
           </Route>
           <Route path="/saveditems">
-              {showCategory && <Categories />}
               <SavedItem/>
           </Route>
           <Route path="/login">
-              {showCategory && <Categories />}
               <Login/>
           </Route>
           <Route path="/signup">
-              {showCategory && <Categories />}
               <SignUp/>
           </Route>
           <Route path="/sell">
-              {showCategory && <Categories />}
               <VSignUp/>
           </Route>
           <Route path="/forgetpassword">
-              {showCategory && <Categories />}
               <ForgetPassword/>
           </Route>
           <Route path="/editupload/:id">
-              {showCategory && <Categories />}
               <EditProduct/>
           </Route>
           <Route path="/setting">

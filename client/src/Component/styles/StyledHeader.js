@@ -77,7 +77,7 @@ export const Search = styled.div`
         color: black;
     }
 
-    @media screen and (max-width: 1050px){
+    @media screen and (max-width: 1150px){
         display: none;
     }
 `
@@ -144,12 +144,16 @@ export const Navs = styled.ul`
         border-radius: 50%;
         object-fit: contain;
     }
+    @media screen and (max-width: 1150px){
 
-    @media screen and (max-width: 830px){
-        justify-content: flex-end
+        gap: 20px;
+
+    }
+
+    @media screen and (max-width: 870px){
+        justify-content: flex-end;
         
         li:not(li:nth-child(3)){
-            display: none;
-        }
-    }    
+        display: none;
+    }
 `

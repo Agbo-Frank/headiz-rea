@@ -9,8 +9,7 @@ import { Link } from "react-router-dom"
 import img from '../img/IMG-20210720-WA0096.jpg'
 
  
-function Header({displayCategories }){
-    var user = useSelector(state => state.user)
+function Header({displayCategories, user }){
     var dispatch = useDispatch()
     return(
         <StyledHeader>
@@ -24,11 +23,11 @@ function Header({displayCategories }){
             </label>
             <Logo><h1>HEADIZ</h1></Logo>
             {
-                user.user ?
+                user ?
                   ( 
                     <div>
                         {
-                            user.user.isUser && (
+                            user.isUser && (
                                 <Search>
                                     <FaSearch style={{color: "grey"}}/>
                                     <input type="search" placeholder="Search Product and categories..."/>
@@ -36,12 +35,12 @@ function Header({displayCategories }){
                             ) 
                         }
                         {
-                            user.user.isUser ? (
+                            user.isUser ? (
                                 <Navs>
                                     <li>
                                         <Link to="/" >          
                                             <FaRegUserCircle style={{color: "White", fontSize: "20px", marginRight: "10px"}}/>
-                                            { user.user.firstName }
+                                            { user.firstName }
                                         </Link>
                                     </li>
                                     <li >
@@ -54,7 +53,7 @@ function Header({displayCategories }){
                                         <Link to="/cart" >
                                             <div className="cart-icon">
                                                 <MdLocalGroceryStore style={{color: "White", fontSize: "20px", marginRight: "10px"}}/>
-                                                <span>{ user.user.cart.length }</span>
+                                                <span>{ user.cart.length }</span>
                                             </div>
                                             Cart
                                         </Link>
@@ -71,9 +70,9 @@ function Header({displayCategories }){
                                     <img src={img} alt="profile pics" />
                                     <div style={{flexFlow: "column"}}>
                                         <p>
-                                            <span>{user.user.firstName}</span>
+                                            <span>{user.firstName}</span>
                                             &nbsp;
-                                            <span>{user.user.lastName}</span>
+                                            <span>{user.lastName}</span>
                                         </p>
                                         <p>Admin</p>
                                     </div>
@@ -91,22 +90,22 @@ function Header({displayCategories }){
                             <input type="search" placeholder="Search Product and categories..."/>
                         </Search>
                         <Navs>
+                            <li>
+                                <Link to="/contact">
+                                    <BsQuestionCircle style={{color: "White", fontSize: "20px", marginRight: "10px"}}/>
+                                    Help
+                                </Link>
+                            </li>
                             <li onClick = {() => dispatch(logOut())}>
                                 <Link to="/signup">
                                     <FaRegUserCircle style={{color: "White", fontSize: "20px", marginRight: "10px"}}/>
-                                    Sign Up
+                                    SignUp
                                 </Link>
                             </li>
                             <li>
                                 <Link to="/login">
                                     <BsBoxArrowInLeft style={{color: "White", fontSize: "20px", marginRight: "10px"}}/>
                                     Login
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to="/contact">
-                                    <BsQuestionCircle style={{color: "White", fontSize: "20px", marginRight: "10px"}}/>
-                                    Help
                                 </Link>
                             </li>
                             <li >

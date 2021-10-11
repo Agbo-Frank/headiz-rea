@@ -50,6 +50,10 @@ form.signUp{
   --add: #f3bede;
   --grey: #f0f0f0;
 }
+.billing{
+  display: flex; 
+  gap: 20px
+}
 .billingDetalis{
   flex: 50%;
   background-color: white;
@@ -199,12 +203,6 @@ footer > p{
   padding: 10px 45px;
 }
 
-.swiper {
-  background-color: #96316e;
-  width: 100%;
-  height: 300px;
-}
-
 section{
   padding: 55px 40px;
 }
@@ -270,11 +268,13 @@ section  button{
   text-decoration: none;
   position: absolute;
   bottom: 0;
-  left: 0;;
+  left: 0;
   width: 100%;
+  height: 12%;
   text-align: center;
   background-color: var(--add);
-  padding: 6px auto;
+  padding: 15px auto;
+  line-height: 1.5;
   color: var(--footer_color);
   cursor: pointer;
   user-select: none;
@@ -293,12 +293,77 @@ section  button{
   color: black;
 }
 
+.item{
+  height: 250px;
+  width: 200px;
+  transition: all linear 0.3s;
+}
+.item:hover{
+  transform: scale(1.05);
+}
+.item > div:first-child{
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 75%;
+  border-radius: 3px;
+  box-shadow: 3px 2px 5px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+.item > div:first-child > img{
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+.item > div:first-child a:last-child{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  background-color: var(--add);
+  padding: 6px auto;
+  color: var(--footer_color);
+  cursor: pointer;
+}
+.item > div:first-child span{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: var(--main_color);
+  cursor: pointer;
+  z-index: 2;
+  user-select: none;
+}
+.item small{
+  font-size: 12px;
+  color: black;
+}
+.item p{
+  text-align: center;
+}
+.products{
+  margin: 20px;
+}
+.products .text{
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+  user-select: none;
+}
+.products .text p:last-child{
+  display: flex;
+  justify-content: space-between;
+}
 
 .productDetails{
   display: flex;
   gap: 25px;
   justify-content: center;
   padding: 30px 60px; 
+}
+.productDetails h2{
+  text-transform: uppercase;
 }
 .productDetails > div:first-child{
   flex: 30%;
@@ -310,6 +375,8 @@ section  button{
   box-shadow: 0 0px 3px rgba(0, 0, 0, 0.2);
 }
 .productDetails > div:last-child{
+  display: flex;
+  flex-flow: column;
   flex: 75%;
   padding: 20px 10px;
 }
@@ -350,7 +417,7 @@ section  button{
 .quatityControl > button,
 .quatityControl > p{
   background-color: white;
-  padding: 8px;
+  padding: 5px 8px;
   border: none;
   outline: none; 
   border-bottom: grey 1px solid;
@@ -458,6 +525,38 @@ section  button{
 .cart{
   user-select: none;
   cursor: pointer;
+}
+.product-card{
+  display: none;
+  flex-flow: column;
+  padding: 10px 15px;
+  margin: 15px auto;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+}
+.product-card img{
+  width: 200px;
+  height: auto;
+  display: block;
+  margin: 10px auto;
+  margin-bottom: 30px;
+  object-fit: cover;
+  padding: 10px;
+  box-shadow: 0 0 3px grey;
+}
+.product-card > div{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.product-card > div > p:first-child{
+  text-transform: uppercase;
+}
+.product-card > div:last-child > p:last-child{
+  color: var(--main_color);
+  font-weight: bolder;
 }
 
 .settings{
@@ -591,13 +690,32 @@ section  button{
       flex: 100%;
       display: block;
       margin: 10px auto;
+      padding: 5px auto;
+      width: 100%;
+  }
+  .productDetails > div:first-child img {
+    display: block;
+    margin: 7px auto;
   }
   .productDetails > div:last-child{
       flex: 100%;
+      flex-flow: column;
       padding: 10px 6px;
+  }
+  .productDetails > div:last-child > p{
+    order: 5;
   }
   .productDetails > div:last-child > .stars{
       margin: 15px 0;
+  }
+  .priceControl{
+    justify-content: space-between;
+  }
+  .priceControl input{
+    flex: 30%;
+  }
+  .priceControl button{
+    flex: 70%;
   }
   .saved-item, .order-item{
     flex-flow: column;
@@ -653,4 +771,63 @@ section  button{
   .search{
       display: flex;
   }
+  .product-card{
+    display: flex;
+  }
+  .billingDetalis,
+  .orderDetails{
+    flex: 100%;
+    width: 100% !important;
+  }
+  .orderDetails > div{
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  }
+  .orderDetails  div .orderCard{
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+    margin: 10px 10px 5px 10px;
+  }
+  .pay{
+    flex-flow: column;
+    gap: 20px;
+    padding: 10px 15px;
+  }
+  .pay button{
+    width: 100%;
+    padding: 10px 15px;
+    text-align: center;
+    background-color: white;
+    color: var(--main_color);
+    border-radius: 5px;
+    box-shadow: 0 0 3px rgba(228, 60, 161, 0.3);
+    border: none;
+    outline: none;
+  }
+  .pay button:last-child{
+    background-color: var(--main_color);
+    color: white;
+  }
+  .billing{
+    flex-flow: column;
+    margin: 0;
+    padding: 0;
+  }
+  .billingDetalis{
+    flex: 100%;
+    padding: 0;
+  }
+  .orderDetails{
+    margin: 0;
+    padding: 0;
+  }
+  .orderDetails h3 {
+    display: none;
+  }
+  .options{
+    margin: 23px 15px;
+  }
+  
 }    

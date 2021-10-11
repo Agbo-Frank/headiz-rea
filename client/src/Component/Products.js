@@ -1,7 +1,10 @@
+import Categories from './Categories';
+import Header from './Header';
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory } from "react-router"
 import { useParams } from "react-router-dom"
+import { loadUser } from "../redux/action/userAction"
 import { getProduct } from "../redux/action/productAction"
 import { Price } from "./styles/StyledBody"
 import { BsHeart, BsHeartFill } from "react-icons/bs";
@@ -10,12 +13,28 @@ import { addToCart } from '../redux/action/cartAction'
 import {Image} from 'cloudinary-react';
 
 function Item({ items }){
+    var [showCategory, setShowCategory] = useState('none')
+
+    useEffect(() => {
+        dispatch(loadUser())
+    }, [dispatch])
+
     var dispatch = useDispatch()
     var history = useHistory()
     var user = useSelector(state => state.user.user)
     var quantity = 1
+    function handleClick(){
+        if(showCategory === 'none'){
+            setShowCategory('block')
+        }
+        else(
+            setShowCategory('none')
+        )
+    }
     return(
         <>
+            <Header displayCategories={handleClick} user={user}/>
+            <Categories display={showCategory} user={user}/>
             {
                 items.map(item => (
                     <div className="card"  key={item._id}>

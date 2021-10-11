@@ -6,6 +6,11 @@ export const StyledBody = styled.div`
     height: fit-content;
     width: 100%;
     justify-content: space-evenly;
+
+    @media screen and (max-width: 830px){
+        flex-flow: column;
+        
+    }    
 `
 export const StyledBodyD = styled.div`
     display: flex;
@@ -28,6 +33,12 @@ export const SideBar = styled.div`
         padding: 4px 50px 4px 2px;
         border-bottom: 1px solid #f0f0f0;
     }
+
+    @media screen and (max-width: 830px){
+        .side-bar{
+            padding: 20px;
+        }
+    }  
 `
 export const SideBarD = styled.div`
     flex: 25%;
@@ -143,6 +154,10 @@ export const Table = styled.table`
     tr > td:last-child span:hover{
         color: var(--main_color);
     }
+
+    @media screen and (max-width: 830px){
+        display: none;
+    } 
 `
 
 export const Price = styled.div`

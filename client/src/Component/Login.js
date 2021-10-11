@@ -5,8 +5,11 @@ import { Link, useHistory } from "react-router-dom"
 import { Breadcrums, MainContent, SideBar, StyledBody } from "./styles/StyledBody"
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from '../redux/action/userAction'
+import Categories from './Categories';
+import Header from './Header';
 
 function Login() {
+    var [showCategory, setShowCategory] = useState('none')
     const [showPw, setShowPw] = useState(true)
     const [pw, setPw] = useState('password')
     const [email, setEmail] = useState('')
@@ -16,6 +19,8 @@ function Login() {
     var history = useHistory()
 
     var error = useSelector(state => state.error.errorMsg)
+    var user = useSelector(state => state.user.user)
+    
     const showPassword = (e) => {
         if(pw === 'password'){
             setPw('text')
@@ -36,54 +41,66 @@ function Login() {
         setEmail('')
         setPassword('')
     }
+    function handleClick(){
+        if(showCategory === 'none'){
+            setShowCategory('block')
+        }
+        else(
+            setShowCategory('none')
+        )
+    }
     return(
-        <StyledBody>
-            <SideBar>
-                <Breadcrums>
-                    <li><a href="/">Homepage</a></li>
-                    <li><a href="account" className="active">Account</a></li>
-                </Breadcrums>
-                <h2>Login</h2>
-            </SideBar>
-            <MainContent>
-               <Form className="block" onSubmit={(e) => submit(e)}>
-                    <StyleInput>
-                        <label>
-                            <p>Email Address</p>
-                            <input 
-                            type='email'
-                            value={ email }
-                            onChange={(e) => setEmail(e.target.value)}
-                            />
-                        </label>
-                        <p className="error">{error &&  error.email }</p>
-                    </StyleInput>
-                    <StyleInput>
-                        <label>
-                            <p>Password</p>
-                            <PasswordInput>
-                                <div>
-                                    <input 
-                                    type={ pw }
-                                    value={ password }
-                                    onChange={ (e) => setPassword(e.target.value)} />
-                                    <div onClick={(e) => showPassword(e)}>{showPw ? <MdVisibility style={{color: "grey"}}/>: 
-                                    <MdVisibilityOff style={{color: "grey"}}/>}</div>
-                                </div>
-                                <div>
-                                    <p className="error">{error &&  error.password }</p>
-                                    <Link to="forgetpassword">Forget Password</Link>
-                                </div>
-                            </PasswordInput>
-                        </label>
-                   </StyleInput>  
-                   <FormButton>
-                      <button type="submit">Login</button>
-                      <p>Not a Member? <Link to="signup">Register</Link></p>
-                   </FormButton>
-               </Form> 
-            </MainContent>
-        </StyledBody>
+        <>
+            <Header displayCategories={handleClick} user={user}/>
+            <Categories display={showCategory} user={user}/>
+            <StyledBody>
+                <SideBar>
+                    <Breadcrums>
+                        <li><a href="/">Homepage</a></li>
+                        <li><a href="account" className="active">Account</a></li>
+                    </Breadcrums>
+                    <h2>Login</h2>
+                </SideBar>
+                <MainContent>
+                <Form className="block" onSubmit={(e) => submit(e)}>
+                        <StyleInput>
+                            <label>
+                                <p>Email Address</p>
+                                <input 
+                                type='email'
+                                value={ email }
+                                onChange={(e) => setEmail(e.target.value)}
+                                />
+                            </label>
+                            <p className="error">{error &&  error.email }</p>
+                        </StyleInput>
+                        <StyleInput>
+                            <label>
+                                <p>Password</p>
+                                <PasswordInput>
+                                    <div>
+                                        <input 
+                                        type={ pw }
+                                        value={ password }
+                                        onChange={ (e) => setPassword(e.target.value)} />
+                                        <div onClick={(e) => showPassword(e)}>{showPw ? <MdVisibility style={{color: "grey"}}/>: 
+                                        <MdVisibilityOff style={{color: "grey"}}/>}</div>
+                                    </div>
+                                    <div>
+                                        <p className="error">{error &&  error.password }</p>
+                                        <Link to="forgetpassword">Forget Password</Link>
+                                    </div>
+                                </PasswordInput>
+                            </label>
+                    </StyleInput>  
+                    <FormButton>
+                        <button type="submit">Login</button>
+                        <p>Not a Member? <Link to="signup">Register</Link></p>
+                    </FormButton>
+                </Form> 
+                </MainContent>
+            </StyledBody>
+        </>
     )
 }
 

@@ -9,13 +9,13 @@ import { logOut } from '../redux/action/userAction'
 function Menu({ active, view }){
     var dispatch = useDispatch()
     return(
-        <StyledMenu>
+        <StyledMenu active={active}>
             {view === 'vendor' ?<Fragment className='vendor'> <li><Link to="VendorProducts" className={active === 'Dashboard' && 'active'}><BsColumnsGap/>Dashboard</Link></li>
             <li><Link to="VendorProducts" className={active === 'Product' && 'active'}><BsGift/>Product</Link></li>
             <li><a className={active === 'setting' && 'active'}><BsGear/>Setting</a></li>
             <li><a className={active === 'order' && 'active'}><MdDashboard/>Orders</a></li>
             <li><a className={active === 'Logout' && 'active'}><BsBoxArrowRight style={{fontSize: "20px"}}/>Logout</a></li></Fragment> : 
-            <><li><Link className={active === 'product' && 'active'}>Account Details</Link></li>
+            <><li><Link className={active === 'dashboard' && 'active'}>Dashboard</Link></li>
             <li><Link to="order" className={active === 'order' && 'active'}>order</Link></li>
             <li><Link to="saveditems" className={active === 'Saved item' && 'active'}>Saved item</Link></li>
             <li><Link to="cart" className={active === 'cart' && 'active'}>Cart</Link></li>

@@ -1,10 +1,8 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Billing from './Component/Billing';
-import Categories from './Component/Categories';
 import Contact from './Component/Contact';
 import Footer from './Component/Footer';
 import ForgetPassword from './Component/ForgetPassword';
-import Header from './Component/Header';
 import Home from './Component/Home';
 import Login from './Component/Login';
 import SignUp from './Component/SignUp';
@@ -20,7 +18,7 @@ import SavedItem from './Component/SavedItem';
 import Settings from './Component/Setting';
 import VDashboard from './Component/VDashboard';
 import Order from './Component/Orders';
-import { useState } from 'react';
+import Successfull from './Component/Successful';
 
 function App() {
   return (
@@ -58,6 +56,9 @@ function App() {
           </Route>
           <Route path="/vendor">
               <VDashboard/>
+          </Route>
+          <Route path="/success">
+              <Successfull/>
           </Route>
           <Route path="/order">
               <Order/>

@@ -1,7 +1,7 @@
 import axios from "axios"
 import { setHeaders } from './userAction'
 
-export function createOrder(doc){
+export function createOrder(doc, history){
     return function(dispatch, getState){
         var cart = getState().user.user.cart
     
@@ -10,6 +10,7 @@ export function createOrder(doc){
                dispatch({
                    type: 'EMPTY_CART'
                })
+               history.push('/success')
            })
     }
 }

@@ -39,21 +39,21 @@ function Indicators(props) {
 
 export default function MySlider({ items }) {
     const settings = {
-      customPaging: function(i) {
-        return (
-          <div style = {{
-            cursor: "pointer",
-            userSelect: "none",
-            width: "10px",
-            height: "10px",
-            backgroundColor: "grey",
-            borderRadius: "50%",
-            marginRight: "2px",
-          }}></div>
-        );
-      },
+      // customPaging: function(i) {
+      //   return (
+      //     <div style = {{
+      //       cursor: "pointer",
+      //       userSelect: "none",
+      //       width: "10px",
+      //       height: "10px",
+      //       backgroundColor: "grey",
+      //       borderRadius: "50%",
+      //       marginRight: "2px",
+      //     }}></div>
+      //   );
+      // },
 
-      dots: true,
+      // dots: true,
       infinite: true,
       lazyLoad: true,
       speed: 500,
@@ -71,8 +71,6 @@ export default function MySlider({ items }) {
       justifyContent: "center",
       alignItems: "center",
       width: "100%",
-      height: "60vh",
-      backgroundColor: "var(--slide)",
     }
     return (
       <div>

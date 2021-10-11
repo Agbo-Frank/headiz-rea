@@ -37,9 +37,11 @@ export function removefromSavedItem(id){
     }
 }
 
-export function getSavedItem(){
+export function getSavedItem(history){
     return function(dispatch, getState){
         dispatch({type: 'LOADING_SAVED_ITEM'})
+        var user = getState().user.user
+        if(!user) history.push('/login')
         axios.get(`/api/savedItem`, setHeaders(getState))
           .then(res => {
               dispatch({

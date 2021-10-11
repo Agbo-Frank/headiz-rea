@@ -64,4 +64,42 @@ export const StyledSlide = styled.div`
         object-position: center;
         margin-left: auto;
     }
+
+    @media screen and (max-width: 830px){
+        border-radius: 15px;
+        width: 80%;
+        margin: 0 auto 10px;
+        padding: 20px;
+        height: 40vh;
+
+        > div{
+            display: block;
+            width: 100%;
+            height: 100%;
+
+            h1{
+                font-size: 18px;
+            }
+            img{
+                border-radius: 15px;
+                display: block;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+        > div >.slide-details{
+            border-radius: 15px;
+            width: 100%;
+            height: 100%;
+            display: block;
+            text-align: start;
+            background: transparent;
+            color: whitesmoke;
+            background: linear-gradient(to right, rgba(200, 223, 220, 0.6) 10%, rgba(200, 223, 220, 0));
+        }
+        .slide-details p{
+            display: none;
+        }
+    }
 `

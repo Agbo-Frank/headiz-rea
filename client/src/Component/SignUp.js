@@ -68,8 +68,8 @@ function SignUp() {
              <StyledBody>
                 <SideBar>
                     <Breadcrums>
-                        <li><a href="/">Homepage</a></li>
-                        <li><a href="account" className="active">Account</a></li>
+                        <li><Link to="/" href="/">Homepage</Link></li>
+                        <li><Link href="account" className="active">Account</Link></li>
                     </Breadcrums>
                     <h2>Sign Up</h2>
                 </SideBar>

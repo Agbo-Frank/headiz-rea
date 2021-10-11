@@ -1,6 +1,7 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory } from "react-router"
+import { FaSearch } from "react-icons/fa";
 import Categories from './Categories';
 import Header from './Header';
 import { getProduct } from "../redux/action/productAction"
@@ -42,11 +43,11 @@ function Home(){
         <div>
             <Header displayCategories={handleClick} user={user}/>
             <Categories display={showCategory} user={user}/>
-            <MySlider items={items}/>
             <div className="search">
-                <span class="material-icons">search</span>
+                <FaSearch style={{color: "grey"}}/>
                 <input type="search" placeholder="Search Product and categories..." />
             </div>
+            <MySlider items={items}/>
             <section>
             <div>
                 <h3>Luxury human hair</h3>
@@ -67,7 +68,7 @@ function Home(){
                                 <Image cloudName="agbofrank" publicId={item.file_id} onClick={() => history.push(`/product/${item._id}`)}/>
                                 <a onClick={() => dispatch(addToCart(item._id, item.price, item.category, quantity, item.file_id, item.name))} className="a">Add To Cart</a>
                             </div>
-                                <div>
+                            <div>
                                 <small>{item.description}</small>
                                 <Price>
                                     <span><s>${item.price}</s></span>

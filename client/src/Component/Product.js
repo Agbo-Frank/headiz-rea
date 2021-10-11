@@ -21,8 +21,8 @@ function Product(){
     var { id } = useParams()
 
     useEffect(() => {
-        dispatch(getItem(id))
         dispatch(getProduct())
+        dispatch(getItem(id))
     }, [dispatch])
     var item = useSelector(state => state.product.item)
     var items = useSelector(state => state.product.items)

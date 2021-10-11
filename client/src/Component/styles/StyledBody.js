@@ -129,6 +129,10 @@ export const Block = styled.div`
     label{
         text-align: left;
     }
+
+    @media screen and (max-width: 830px){
+        width: 97%
+    }
 `
 export const Table = styled.table`
     background-color: white;

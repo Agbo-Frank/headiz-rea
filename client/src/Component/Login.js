@@ -56,8 +56,8 @@ function Login() {
             <StyledBody>
                 <SideBar>
                     <Breadcrums>
-                        <li><a href="/">Homepage</a></li>
-                        <li><a href="account" className="active">Account</a></li>
+                        <li><Link to="/">Homepage</Link></li>
+                        <li><Link className="active">Account</Link></li>
                     </Breadcrums>
                     <h2>Login</h2>
                 </SideBar>

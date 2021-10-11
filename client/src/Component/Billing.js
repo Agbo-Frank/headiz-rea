@@ -11,6 +11,7 @@ import verve from '../img/Verve-Logo-750x396.png'
 import master from '../img/master card.png'
 import interswitch from '../img/interswitch.png'
 import { createOrder } from '../redux/action/orderAction'
+import { useHistory } from "react-router";
 
 
 function Billing(){
@@ -22,6 +23,7 @@ function Billing(){
     const [expiryDate, setExpiryDate] = useState(''); 
 
     var dispatch = useDispatch()
+    var history = useHistory()
 
     var price = useSelector(state => state.user.totalBill)
     var user = useSelector(state => state.user.user)
@@ -35,10 +37,10 @@ function Billing(){
 
         var doc = {
             fname, town, state, lname, email, cardno, cvv, payByCard,
-            pnumber, address, expiryDate, payByCard, price  
+            pnumber, address, expiryDate, price  
         }
 
-        dispatch(createOrder(doc))
+        dispatch(createOrder(doc, history))
 
         setFname('')
         setTown('')

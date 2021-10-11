@@ -1,5 +1,6 @@
 import Slider from "react-slick";
 import {Image} from 'cloudinary-react';
+import { Price } from "./styles/StyledBody"
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory } from "react-router"
 import { addToSavedItem, removefromSavedItem } from '../redux/action/savedItemAction'
@@ -11,7 +12,7 @@ function Item({item, user}){
     var history = useHistory()
     var quantity = 1
     return(
-        <div className="item">
+        <div className="card">
             <div>
                 <span>
                     {
@@ -23,8 +24,13 @@ function Item({item, user}){
                 <Image cloudName="agbofrank" publicId={item.file_id} onClick={() => history.push(`/product/${item._id}`)}/>
                 <a onClick={() => dispatch(addToCart(item._id, item.price, item.category, quantity, item.file_id, item.name))} className="a">Add To Cart</a>
             </div>
-            <small>{item.description}</small>
-            <p>{item.price}</p>
+            <div>
+                <small>{item.description}</small>
+                <Price className="price">
+                    <span style={{display: "none"}}>${item.price}</span>
+                    <span>${item.price}</span>
+                </Price> 
+            </div>
         </div>
     )
 }

@@ -7,6 +7,7 @@ import Menu from './Menu'
 import { loadUser } from "../redux/action/userAction"
 import Categories from './Categories';
 import Header from './Header';
+import { Link } from "react-router-dom"
 import {Image} from 'cloudinary-react';
 
 
@@ -19,7 +20,7 @@ function SavedItem(){
 
     useEffect(() => {
         dispatch(loadUser())
-        dispatch(getSavedItem())
+        dispatch(getSavedItem(history))
     }, [])
 
     var items = useSelector(state => state.savedItem.items)
@@ -45,8 +46,8 @@ function SavedItem(){
              <StyledBody>
                 <SideBar>
                     <Breadcrums>
-                        <li><a onClick={()=> history.push('/')}>Homepage</a></li>
-                        <li><a href="cart" class="active">saved-item</a></li>
+                        <li><Link to="/" >Homepage</Link></li>
+                        <li><Link to="/cart"class="active">saved-item</Link></li>
                     </Breadcrums>
                     <h2>Saved Items</h2>
                     <Menu view='user' active='Saved item'/>

@@ -11,6 +11,7 @@ function Categories({display, user}){
                 <li><Link to="/products/f/c">FRONTALS & CLOSURE</Link></li>
                 <li><Link to="/products/hairCare">HAIR CARE</Link></li>
                 <li><Link to="/products/beautyShop">BEAUTY SHOP</Link></li>
+                {!user && <li><Link to="/signup">Sign Up</Link></li>}
             </ul>
             <Link to="sell">{user ? 'Log Out' : 'Sell'}</Link>
         </StyledCategories>

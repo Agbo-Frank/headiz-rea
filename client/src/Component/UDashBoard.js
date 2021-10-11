@@ -1,5 +1,6 @@
 import { StyledBody, MainContent, SideBar, Breadcrums } from './styles/StyledBody'
-import { BsPerson, BsBoxArrowRight, BsHeart, BsClipboardData, BsCart3 } from "react-icons/bs";
+import { BsPerson, BsBoxArrowRight, BsHeart, BsClipboardData } from "react-icons/bs";
+import { MdLocalGroceryStore } from 'react-icons/md'
 import Menu from './Menu';
 import { loadUser } from "../redux/action/userAction"
 import { useDispatch, useSelector } from "react-redux"
@@ -71,7 +72,7 @@ function UDashBoard(){
                     </div>
                     <div className="dcard">
                         <Link to="/cart">   
-                        <BsCart3 style={{fontSize: "50px"}}/>
+                        <MdLocalGroceryStore style={{fontSize: "50px"}}/>
                         <p>Cart</p>
                         </Link>
                     </div>

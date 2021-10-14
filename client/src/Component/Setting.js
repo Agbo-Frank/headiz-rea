@@ -2,7 +2,9 @@ import { MainContent, SideBarD, StyledBodyD } from "./styles/StyledBody";
 import { Form,InputGroup, StyleInputD, PasswordInput, FormButton } from "./styles/FormStyling";
 import { MdVisibility, MdVisibilityOff } from "react-icons/md";
 import Menu from "./Menu"
+import { useDispatch,useSelector } from "react-redux";
 import { useState } from 'react'
+import Header from './Header';
 
 
 function UserDetails(){
@@ -159,21 +161,24 @@ function BuisnessDetails(){
 
 export default function Settings(){
     const [isOpen, setIsOpen] = useState(false)
+    var user = useSelector(state => state.user.user)
     return(
-        <StyledBodyD style={{backgroundColor: "#f0f0f0"}}>
-            <SideBarD style={{height: "100vh", marginLeft: "20px"}}>
-            <Menu active='setting' view='vendor'/>
-            </SideBarD>
-            <MainContent>
-                <div className="settings">
-                    <button className={!isOpen && "active"} onClick = {() => setIsOpen(false)}>User Details</button>
-                    <button className={isOpen && "active"} onClick = {() => setIsOpen(true)}>Business Details</button>
-                </div>
-                {
-                    isOpen ? <BuisnessDetails/> : <UserDetails/>
-                }
-            </MainContent>
-        </StyledBodyD>
-        
+        <>
+          <Header user={user}/>
+            <StyledBodyD style={{backgroundColor: "#f0f0f0"}}>
+                <SideBarD style={{height: "100vh", marginLeft: "20px"}}>
+                <Menu active='setting' view='vendor'/>
+                </SideBarD>
+                <MainContent>
+                    <div className="settings">
+                        <button className={!isOpen && "active"} onClick = {() => setIsOpen(false)}>User Details</button>
+                        <button className={isOpen && "active"} onClick = {() => setIsOpen(true)}>Business Details</button>
+                    </div>
+                    {
+                        isOpen ? <BuisnessDetails/> : <UserDetails/>
+                    }
+                </MainContent>
+            </StyledBodyD>
+        </>
     )
 } 

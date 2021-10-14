@@ -3,9 +3,9 @@ import { Form, StyleInputD, DropZoneD, FormButton } from "./styles/FormStyling"
 import { MainContent, SideBarD, StyledBodyD } from "./styles/StyledBody"
 import { useState } from 'react'
 import insertImg from '../img/insert-picture-icon.svg'
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { uploadProduct } from '../redux/action/productAction'
-
+import Header from './Header';
 
 function UploadProduct(){
     const [category, setCategory] = useState('')
@@ -46,10 +46,13 @@ function UploadProduct(){
         setFile('')
         setAvailability('')
     }
+    var user = useSelector(state => state.user.user)
 
     
     return(
-        <StyledBodyD>
+        <>
+        <Header user={user}/>
+            <StyledBodyD>
             <SideBarD>
                 <Menu active='Product' view='vendor'/>
             </SideBarD>
@@ -140,6 +143,7 @@ function UploadProduct(){
                 </Form>
             </MainContent>
         </StyledBodyD>
+        </>
     )
 }
 

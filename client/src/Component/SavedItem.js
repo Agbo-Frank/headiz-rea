@@ -25,6 +25,7 @@ function SavedItem(){
 
     var items = useSelector(state => state.savedItem.items)
     var user = useSelector(state => state.user.user)
+    var loading = useSelector(state => state.savedItem.loading)
     function proceed(bill){
         dispatch({type: 'UPDATE_BILL', payload: bill})
         history.push('/billing')
@@ -43,7 +44,10 @@ function SavedItem(){
        <>
             <Header displayCategories={handleClick} user={user}/>
             <Categories display={showCategory} user={user}/>
-             <StyledBody>
+             {
+                 loading ? 
+                 <div>Loading...</div> :
+                 <StyledBody>
                 <SideBar>
                     <Breadcrums>
                         <li><Link to="/" >Homepage</Link></li>
@@ -76,7 +80,7 @@ function SavedItem(){
                     }
                 </div>
                 </MainContent>
-            </StyledBody>
+            </StyledBody>}
        </>
     )
 }

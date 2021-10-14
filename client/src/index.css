@@ -7,6 +7,7 @@
   padding: 0;
   font-family: 'Quicksand', sans-serif;
   box-sizing: border-box;
+  font-size: 100%;
 }
 .search{
   display: none;
@@ -615,6 +616,9 @@ section  button{
 }
 
 @media screen and (max-width: 1050px){
+  section{
+    padding: 30px 15px;
+  }
   footer > div {
     display: grid;
     grid-template-columns: auto auto;
@@ -719,6 +723,16 @@ section  button{
 }
 
 @media screen and (max-width: 830px){
+  section{
+    padding: 10px 5px;
+  }
+  section button,
+  .card:nth-child(17),
+  .card:nth-child(18),
+  .card:nth-child(19),
+  .card:nth-child(20){
+        display: none;
+  }
   .search{
       display: flex;
   }
@@ -826,39 +840,31 @@ section  button{
     margin-bottom: 50px;
   }
   .card{
-    margin: 0 auto;
-    height: 230px;
+    height: 210px;
   }
   .card:hover{
     transform: scale(1.03);
   }
   .card > div:first-child{
-    position: relative;
-    top: 0;
-    left: 0;
-    height: 75%;
-    border-radius: 3px;
-    box-shadow: 3px 2px 5px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s;
-    overflow: hidden;
+    height: 80%;
+    border-radius: 6px;
   }
-  .card > div:first-child:hover{
-    box-shadow: 3px 2px 8px rgba(172, 85, 85, 0.5);
-  }
-  .card > div:first-child > img{
+  /* .card > div:first-child > img{
     padding: 7px;
     display: block;
-  }
+  } */
   .card > div:first-child a:last-child{
     display: none;
   }
-  .card > div:first-child span{
+  /* .card > div:first-child span{
     top: 13px;
     right: 13px;
-  }
+  } */
   .card > div:last-child > small{
     display: inline-block;
     margin: 0 auto;
+    text-align: center;
+    width: 100%;
   }
   .card > div:last-child > div > span{
     display: inline-block;
@@ -870,13 +876,15 @@ section  button{
   }
   form.block{
     position: absolute;
-    top: 30%; left: 50%;
-    transform: translate(-50%, -30%);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
     width: 90%;
   }
   form.signUp{
     position: absolute;
-    top: 30%; left: 5%;
+    left: 5%;
+    top: 50%; 
+    transform: translate(-5%, -50%);
     width: 93%;
   }
   

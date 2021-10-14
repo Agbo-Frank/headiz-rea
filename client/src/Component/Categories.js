@@ -1,7 +1,9 @@
+import { useDispatch } from "react-redux"
 import { Link } from "react-router-dom"
 import { StyledCategories } from "./styles/StyledCategories"
 
 function Categories({display, user}){
+    var dispatch = useDispatch()
     return(
         <StyledCategories display={display}>
             <ul>
@@ -13,8 +15,10 @@ function Categories({display, user}){
                 <li><Link to="/products/beautyShop">BEAUTY SHOP</Link></li>
                 {!user && <li><Link to="/signup">Sign Up</Link></li>}
             </ul>
-            {/* <Link { user ? onClick=dispatch({type: 'LOGOUT'}) : to="sell"}>{user ? 'Log Out' : 'Sell'}</Link> */}
-            <Link to="sell">{user ? 'Log Out' : 'Sell'}</Link>
+            {/* <Link onClick={() => dispatch({type: 'LOGOUT'})}>Log Out</Link> */}
+           {!user ? <Link to="sell">Sell</Link> : 
+                <Link onClick={() => dispatch({type: 'LOGOUT'})}>Log Out</Link>
+           }
         </StyledCategories>
         
     )

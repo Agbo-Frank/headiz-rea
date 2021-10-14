@@ -25,6 +25,7 @@ function Home(){
     var user = useSelector(state => state.user.user)
     var quantity = 1
     
+    var displayedItems = items.slice(0, 20)
 
     useEffect(() => {
         dispatch(getProduct())
@@ -41,62 +42,68 @@ function Home(){
     }
 
     return(
-        <div>
+        <>
             <Header displayCategories={handleClick} user={user}/>
             <Categories display={showCategory} user={user}/>
-            <div className="search">
-                <FaSearch style={{color: "grey"}}/>
-                <input type="search" placeholder="Search Product and categories..." />
-            </div>
-            <MySlider items={items}/>
-            <section>
+        {
+            loading ?
+            <div>loading...</div> :
             <div>
-                <h3>Luxury human hair</h3>
-                <p>See All &rarr;</p>
-            </div>
-            <div className="cards">
-                {
-                    items.map(item => (
-                        <div className="card"  key={item._id}>
-                            <div>
-                                <span>
-                                    {
-                                    user ? user.savedItems.includes( item._id ) ? 
-                                    <BsHeartFill onClick={() => dispatch(removefromSavedItem(item._id))}/> : <BsHeart onClick={() => dispatch(addToSavedItem(item._id))}/> : 
-                                    <BsHeart/>
-                                    }
-                                </span>
-                                <Image cloudName="agbofrank" publicId={item.file_id} onClick={() => history.push(`/product/${item._id}`)}/>
-                                <a onClick={() => dispatch(addToCart(item._id, item.price, item.category, quantity, item.file_id, item.name))} className="a">Add To Cart</a>
+                <div className="search">
+                    <FaSearch style={{color: "grey"}}/>
+                    <input type="search" placeholder="Search Product and categories..." />
+                </div>
+                <MySlider items={items}/>
+                <section>
+                <div>
+                    <h3>Luxury human hair</h3>
+                    <p>See All &rarr;</p>
+                </div>
+                <div className="cards">
+                    {
+                        displayedItems.map(item => (
+                            <div className="card"  key={item._id}>
+                                <div>
+                                    <span>
+                                        {
+                                        user ? user.savedItems.includes( item._id ) ? 
+                                        <BsHeartFill onClick={() => dispatch(removefromSavedItem(item._id))}/> : <BsHeart onClick={() => dispatch(addToSavedItem(item._id))}/> : 
+                                        <BsHeart/>
+                                        }
+                                    </span>
+                                    <Image cloudName="agbofrank" publicId={item.file_id} onClick={() => history.push(`/product/${item._id}`)}/>
+                                    <a onClick={() => dispatch(addToCart(item._id, item.price, item.category, quantity, item.file_id, item.name))} className="a">Add To Cart</a>
+                                </div>
+                                <div>
+                                    <small>{item.description}</small>
+                                    <Price>
+                                        <span><s>${item.price}</s></span>
+                                        <span>${item.price}</span>
+                                    </Price> 
+                                </div>
                             </div>
-                            <div>
-                                <small>{item.description}</small>
-                                <Price>
-                                    <span><s>${item.price}</s></span>
-                                    <span>${item.price}</span>
-                                </Price> 
-                            </div>
-                        </div>
-                    ))
-                }
+                        ))
+                    }
+                </div>
+                <button className="ripple" onClick={() => history.push("/products/hairBundle")}>See More</button>
+            </section>
+            <div className="products">
+                <div className="text">
+                    <strong>Hair Care Products</strong>
+                    <p onClick={() => history.push("/products/hairCare")}>View All &rarr;</p>
+                </div>
+                <Carousel items={items} user={user}/>
             </div>
-            <button className="ripple" onClick={() => history.push("/products/hairBundle")}>See More</button>
-        </section>
-        <div className="products">
-            <div className="text">
-                <strong>Hair Care Products</strong>
-                <Link to="/products/hairCare">View All &rarr;</Link>
+            <div className="products">
+                <div className="text">
+                    <strong>Beauty Products</strong>
+                    <p onClick={() => history.push("/products/beautyShop")}>View All &rarr;</p>
+                </div>
+                <Carousel items={items} user={user}/>
             </div>
-            <Carousel items={items} user={user}/>
         </div>
-        <div className="products">
-            <div className="text">
-                <strong>Beauty Products</strong>
-                <Link to="/products/beautyShop">View All &rarr;</Link>
-            </div>
-            <Carousel items={items} user={user}/>
-        </div>
-    </div>        
+        } 
+        </>    
     )
 }
 

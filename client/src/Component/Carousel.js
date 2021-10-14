@@ -42,60 +42,60 @@ export default function Carousel({items, user}) {
       autoplaySpeed: 5000,
       cssEase: "linear",
       speed: 500,
-      slidesToShow: 3,
-      slidesToScroll: 1,
+      slidesToShow: 6,
+      slidesToScroll: 3,
       autoplaySpeed: 5000,
       cssEase: "linear",
-    //   responsive: [
-    //     {
-    //       breakpoint: 1250,
-    //       settings: {
-    //         infinite: true,
-    //         autoplay: true,
-    //         autoplaySpeed: 5000,
-    //         cssEase: "linear",
-    //         slidesToShow: 5,
-    //         slidesToScroll: 2
-    //       }
-    //     },
-    //     {
-    //       breakpoint: 970,
-    //       settings: {
-    //         infinite: true,
-    //         autoplay: true,
-    //         autoplaySpeed: 5000,
-    //         cssEase: "linear",
-    //         slidesToShow: 4,
-    //         slidesToScroll: 1
-    //       }
-    //     },
-    //     {
-    //         breakpoint: 690,
-    //         settings: {
-    //             infinite: true,
-    //             autoplay: true,
-    //             autoplaySpeed: 5000,
-    //             cssEase: "linear",
-    //             slidesToShow: 3,
-    //             slidesToScroll: 1
-    //         }
-    //     },
-    //     {
-    //         breakpoint: 540,
-    //         settings: {
-    //           className: "center",
-    //           centerMode: true,
-    //           infinite: true,
-    //           centerPadding: "60px",
-    //           infinite: true,
-    //           autoplay: true,
-    //           autoplaySpeed: 5000,
-    //           cssEase: "linear",
-    //           slidesToShow: 2,
-    //           slidesToScroll: 1
-    //         }
-    //       }
-    //   ]
+      responsive: [
+        {
+          breakpoint: 1250,
+          settings: {
+            infinite: true,
+            autoplay: true,
+            autoplaySpeed: 5000,
+            cssEase: "linear",
+            slidesToShow: 5,
+            slidesToScroll: 2
+          }
+        },
+        {
+          breakpoint: 970,
+          settings: {
+            infinite: true,
+            autoplay: true,
+            autoplaySpeed: 5000,
+            cssEase: "linear",
+            slidesToShow: 4,
+            slidesToScroll: 1
+          }
+        },
+        {
+            breakpoint: 690,
+            settings: {
+                infinite: true,
+                autoplay: true,
+                autoplaySpeed: 5000,
+                cssEase: "linear",
+                slidesToShow: 3,
+                slidesToScroll: 1
+            }
+        },
+        {
+            breakpoint: 540,
+            settings: {
+              className: "center",
+              centerMode: true,
+              infinite: true,
+              centerPadding: "60px",
+              infinite: true,
+              autoplay: true,
+              autoplaySpeed: 5000,
+              cssEase: "linear",
+              slidesToShow: 2,
+              slidesToScroll: 1
+            }
+          }
+      ]
     };
     return (
       <div>

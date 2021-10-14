@@ -12,29 +12,12 @@ import { addToSavedItem, removefromSavedItem } from '../redux/action/savedItemAc
 import { addToCart } from '../redux/action/cartAction'
 import {Image} from 'cloudinary-react';
 
-function Item({ items }){
-    var [showCategory, setShowCategory] = useState('none')
-
-    useEffect(() => {
-        dispatch(loadUser())
-    }, [dispatch])
-
+function Item({ items, user }){
     var dispatch = useDispatch()
-    var history = useHistory()
-    var user = useSelector(state => state.user.user)
     var quantity = 1
-    function handleClick(){
-        if(showCategory === 'none'){
-            setShowCategory('block')
-        }
-        else(
-            setShowCategory('none')
-        )
-    }
+    var history = useHistory()
     return(
         <>
-            <Header displayCategories={handleClick} user={user}/>
-            <Categories display={showCategory} user={user}/>
             {
                 items.map(item => (
                     <div className="card"  key={item._id}>
@@ -65,17 +48,46 @@ function Item({ items }){
 export default function Products(){
     var { category } = useParams()
 
+    var [showCategory, setShowCategory] = useState('none')
+
+    useEffect(() => {
+        dispatch(loadUser())
+    }, [dispatch])
+
+    var dispatch = useDispatch()
+    
+    var user = useSelector(state => state.user.user)
+    
+
     var dispatch = useDispatch()
     useEffect(() => {
         dispatch(getProduct())
     }, [dispatch])
 
     var items = useSelector(state => state.product.items)
+    var loading = useSelector(state => state.product.loading)
     var categories = items.filter(item => item.category === category)
 
+    function handleClick(){
+        if(showCategory === 'none'){
+            setShowCategory('block')
+        }
+        else(
+            setShowCategory('none')
+        )
+    }
+
     return(
-        <div className="cards">
-            <Item items={ categories } />
-        </div>
+        <>
+            <Header displayCategories={handleClick} user={user}/>
+            <Categories display={showCategory} user={user}/>
+            {
+                loading ? 
+                <div>Loading...</div>:
+                <div className="cards">
+                    <Item items={ categories } user={ user } />
+                </div>
+            }
+        </>    
     )
 }

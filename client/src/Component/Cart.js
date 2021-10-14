@@ -20,6 +20,7 @@ function Cart(){
     }, [dispatch])
 
     var user = useSelector(state => state.user.user)
+    var loading = useSelector(state => state.user.loading)
     var items = user.cart
 
     var totalBills = items.reduce((total, item ) => ( total + (item.price * item.quantity) ), 0)
@@ -49,6 +50,9 @@ function Cart(){
         <>
             <Header displayCategories={handleClick} user={user}/>
             <Categories display={showCategory} user={user}/>
+           {
+           loading ? 
+           <div>Loading...</div> :
             <div>
                 <Table>
                     <thead>
@@ -138,7 +142,7 @@ function Cart(){
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> }
         </>
     )
 }

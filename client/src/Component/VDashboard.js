@@ -3,6 +3,7 @@ import { Doughnut, Line } from 'react-chartjs-2'
 import { useDispatch, useSelector } from 'react-redux'
 import { getVOrder } from '../redux/action/orderAction'
 import Menu from './Menu'
+import Header from './Header';
 import { MainContent, SideBarD, StyledBodyD, Table } from './styles/StyledBody'
 
 function MyDoughnut(){
@@ -102,8 +103,11 @@ export default function Dashboard(){
   }, [dispatch])
 
   var orders = useSelector(state => state.order.items)
+  var user = useSelector(state => state.user.user)
     return(
-      <StyledBodyD>
+        <>
+        <Header user={user}/>
+           <StyledBodyD>
         <SideBarD style={{
           height: "130vh",
           flex: "20%"
@@ -170,6 +174,6 @@ export default function Dashboard(){
             </div>
         </MainContent>
       </StyledBodyD>
-        
+        </>
     )
 }

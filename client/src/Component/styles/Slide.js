@@ -97,6 +97,10 @@ export const StyledSlide = styled.div`
             background: transparent;
             color: whitesmoke;
             background: linear-gradient(to right, rgba(200, 223, 220, 0.6) 10%, rgba(200, 223, 220, 0));
+
+            a{
+                display: none;
+            }
         }
         .slide-details p{
             display: none;

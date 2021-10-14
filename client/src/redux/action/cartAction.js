@@ -5,7 +5,7 @@ import { getError } from "./erroAction"
 
 export function getCartItem(history){
     return function(dispatch, getState){
-        dispatch({type: 'LOAD_CART_ITEM'})
+        dispatch({type: 'LOADING_USER'})
         var user = getState().user.user
         if(!user) history.push('/login')
         axios.get('/api/cart', setHeaders(getState))

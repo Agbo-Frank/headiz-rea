@@ -108,6 +108,13 @@ export function registerVendor(doc, history){
           })
     }
 }
+
+export function logout(history){
+    return function(dispatch){
+        dispatch({type: 'LOGOUT'})
+        history.push('/login')
+    }
+}
 export function setHeaders(getState){
     var token = getState().user.token
 

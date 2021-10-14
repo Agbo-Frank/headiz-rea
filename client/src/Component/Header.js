@@ -3,13 +3,16 @@ import { FaSearch,FaRegUserCircle } from "react-icons/fa";
 import { MdLocalGroceryStore } from "react-icons/md";
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect } from "react"
+import { useHistory } from "react-router"
 import { BsQuestionCircle, BsBoxArrowInLeft, BsBoxArrowLeft } from "react-icons/bs";
 import { Link } from "react-router-dom"
 import img from '../img/IMG-20210720-WA0096.jpg'
+import { logout } from "../redux/action/userAction";
 
  
 function Header({displayCategories, user }){
     var dispatch = useDispatch()
+    var history = useHistory()
     return(
         <StyledHeader>
             <input type="checkbox" id="menu-bar"/>
@@ -43,7 +46,7 @@ function Header({displayCategories, user }){
                                         </Link>
                                     </li>
                                     <li >
-                                        <Link onClick={() => dispatch({type: 'LOGOUT'})}>
+                                        <Link onClick={() => dispatch(logout(history))}>
                                             <BsBoxArrowLeft style={{color: "White", fontSize: "20px", marginRight: "10px"}}/>
                                             Log Out
                                         </Link>

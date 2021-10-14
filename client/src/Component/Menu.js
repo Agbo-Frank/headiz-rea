@@ -1,12 +1,15 @@
 import { StyledMenu } from "./styles/StyledCategories"
+import { useHistory } from "react-router"
 import { BsGear, BsColumnsGap, BsGift, BsBoxArrowRight } from "react-icons/bs";
 import { MdDashboard } from "react-icons/md";
 import { Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch } from "react-redux";
+import { logout } from '../redux/action/userAction'
 
 function Menu({ active, view }){
     var dispatch = useDispatch()
+    var history = useHistory()
     return(
         <StyledMenu active={active}>
             {view === 'vendor' ?<Fragment className='vendor'> <li><Link to="VendorProducts" className={active === 'Dashboard' && 'active'}><BsColumnsGap/>Dashboard</Link></li>
@@ -18,7 +21,7 @@ function Menu({ active, view }){
             <li><Link to="order" className={active === 'order' && 'active'}>order</Link></li>
             <li><Link to="saveditems" className={active === 'Saved item' && 'active'}>Saved item</Link></li>
             <li><Link to="cart" className={active === 'cart' && 'active'}>Cart</Link></li>
-            <li><Link onClick={() => dispatch({type: 'LOGOUT'})} className={active === 'Log Out' && 'active'}>Log Out</Link></li></>}
+            <li><Link onClick={() => dispatch(logout(history))} className={active === 'Log Out' && 'active'}>Log Out</Link></li></>}
         </StyledMenu>
     )
 }

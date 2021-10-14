@@ -1,9 +1,12 @@
 import { useDispatch } from "react-redux"
+import { useHistory } from "react-router"
 import { Link } from "react-router-dom"
 import { StyledCategories } from "./styles/StyledCategories"
+import { logout } from '../redux/action/userAction'
 
 function Categories({display, user}){
     var dispatch = useDispatch()
+    var history = useHistory()
     return(
         <StyledCategories display={display}>
             <ul>
@@ -17,7 +20,7 @@ function Categories({display, user}){
             </ul>
             {/* <Link onClick={() => dispatch({type: 'LOGOUT'})}>Log Out</Link> */}
            {!user ? <Link to="sell">Sell</Link> : 
-                <Link onClick={() => dispatch({type: 'LOGOUT'})}>Log Out</Link>
+                <Link onClick={() => dispatch(logout(history))}>Log Out</Link>
            }
         </StyledCategories>
         

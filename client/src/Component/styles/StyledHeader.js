@@ -59,6 +59,7 @@ export const StyledHeader = styled.header`
 export const Logo = styled.div`
     flex: 20%;
     color: #fff;
+    font-size: 30px;
 `
 export const Search = styled.div`
     background-color: #fff;

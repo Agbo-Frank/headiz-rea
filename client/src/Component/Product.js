@@ -15,7 +15,7 @@ import Carousel from "./Carousel"
 function Product(){
     var [showCategory, setShowCategory] = useState('none')
     var [toggleMenu, setToggleMenu] = useState('')
-    
+
     var dispatch = useDispatch()
     var history = useHistory()
 
@@ -32,6 +32,17 @@ function Product(){
     var quantity = 1
 
     const [quantities, setQuantities] = useState()
+
+    function submit(e, id, price, category, quantity, file_id, name){
+        e.preventDefault()
+        if(user){
+            dispatch(addToCart(id, price, category, quantity, file_id, name))
+        }
+        else{
+            history.push('/login')
+        }
+        
+    }
 
     function handleClick(){
         if(showCategory === 'none'){
@@ -95,17 +106,14 @@ function Product(){
                         <span><h3><s>$40,000</s></h3></span>
                         <span><h3>${item.price}</h3></span>
                     </Price>
-                    <Form className="priceControl">
+                    <Form className="priceControl"
+                    onSubmit={(e) => submit(e, item._id, item.price, item.category, quantity, item.file_id, item.name)}>
                         <input
                         type="number" 
                         placeholder="Quanlity"
                         value={ quantities }
                         onChange={(e) => setQuantities(e.target.value)}/>
-                        <button onClick={() => {
-                            user ? 
-                            dispatch(addToCart(item._id, item.price, item.category, quantity, item.file_id, item.name)) :
-                            history.push('/login')
-                        }}>Add to Cart</button>
+                        <button type="submit">Add to Cart</button>
                     </Form>
                 </div>
             </div>

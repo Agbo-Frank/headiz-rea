@@ -742,6 +742,8 @@ section  button{
     padding: 50px 20px;
   }
   section button,
+  .card:nth-child(9),
+  .card:nth-child(10),
   .card:nth-child(11),
   .card:nth-child(12),
   .card:nth-child(13),

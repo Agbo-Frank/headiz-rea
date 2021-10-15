@@ -1,8 +1,7 @@
 import { Logo, Navs, Search, StyledHeader } from "./styles/StyledHeader"
 import { FaSearch,FaRegUserCircle } from "react-icons/fa";
 import { MdLocalGroceryStore } from "react-icons/md";
-import { useSelector, useDispatch } from 'react-redux'
-import { useEffect } from "react"
+import {  useDispatch } from 'react-redux'
 import { useHistory } from "react-router"
 import { BsQuestionCircle, BsBoxArrowInLeft, BsBoxArrowLeft } from "react-icons/bs";
 import { Link } from "react-router-dom"

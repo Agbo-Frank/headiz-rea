@@ -4,9 +4,10 @@ import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory } from "react-router"
 import { useParams } from "react-router-dom"
-import { loadUser } from "../redux/action/userAction"
+import Menu from './Menu';
+import { Link } from "react-router-dom"
 import { getProduct } from "../redux/action/productAction"
-import { Price } from "./styles/StyledBody"
+import { Breadcrums, MainContent, Price, SideBar, StyledBody } from "./styles/StyledBody"
 import { BsHeart, BsHeartFill } from "react-icons/bs";
 import { addToSavedItem, removefromSavedItem } from '../redux/action/savedItemAction'
 import { addToCart } from '../redux/action/cartAction'
@@ -49,12 +50,6 @@ export default function Products(){
     var { category } = useParams()
 
     var [showCategory, setShowCategory] = useState('none')
-
-    useEffect(() => {
-        dispatch(loadUser())
-    }, [dispatch])
-
-    var dispatch = useDispatch()
     
     var user = useSelector(state => state.user.user)
     
@@ -81,13 +76,26 @@ export default function Products(){
         <>
             <Header displayCategories={handleClick} user={user}/>
             <Categories display={showCategory} user={user}/>
-            {
-                loading ? 
-                <div>Loading...</div>:
-                <div className="cards">
-                    <Item items={ categories } user={ user } />
-                </div>
-            }
+            <StyledBody>
+                <SideBar>
+                    <Breadcrums>
+                        <li><Link to="/">Homepage</Link></li>
+                        <li><Link to="" className="active">{category}</Link></li>
+                    </Breadcrums>
+                    <h2>{category}</h2>
+                    {user && <Menu view='user'/>}
+                </SideBar>
+                <MainContent>
+                    {
+                        loading ? 
+                        <div>Loading...</div>:
+                        <div className="cards">
+                            <Item items={ categories } user={ user } />
+                        </div>
+                    }
+                </MainContent>
+            </StyledBody>
+            
         </>    
     )
 }

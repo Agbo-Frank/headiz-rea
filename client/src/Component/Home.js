@@ -10,9 +10,8 @@ import { BsHeart, BsHeartFill } from "react-icons/bs";
 import { addToSavedItem, removefromSavedItem } from '../redux/action/savedItemAction'
 import { addToCart } from '../redux/action/cartAction'
 import {Image} from 'cloudinary-react';
-import { loadUser } from "../redux/action/userAction"
+// import { loadUser } from "../redux/action/userAction"
 import MySlider from "./MySlider"
-import { Link } from "react-router-dom"
 import { useState } from 'react';
 import Carousel from "./Carousel"
 
@@ -57,7 +56,7 @@ function Home(){
                 <section>
                 <div>
                     <h3>Luxury human hair</h3>
-                    <p>See All &rarr;</p>
+                    <p onClick={() => history.push('/products/all')}>See All &rarr;</p>
                 </div>
                 <div className="cards">
                     {

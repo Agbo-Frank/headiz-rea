@@ -7,6 +7,7 @@
   padding: 0;
   font-family: 'Quicksand', sans-serif;
   box-sizing: border-box;
+  outline: none;
   font-size: 100%;
 }
 .search{
@@ -615,6 +616,11 @@ section  button{
   padding: 3px 7px;
 }
 
+.slick-slide {
+  margin: 7px 20px;
+  padding: 0 auto;
+}
+
 @media screen and (max-width: 1050px){
   section{
     padding: 30px 15px;
@@ -668,9 +674,13 @@ section  button{
   }
   .priceControl input{
     flex: 30%;
+    width: 30%;
+    padding: 7px;
   }
   .priceControl button{
     flex: 70%;
+    width: 30%;
+    padding: 7px;
   }
   .saved-item, .order-item{
     flex-flow: column;
@@ -724,17 +734,29 @@ section  button{
 
 @media screen and (max-width: 830px){
   section{
-    padding: 10px 5px;
+    padding: 50px 20px;
   }
   section button,
+  .card:nth-child(11),
+  .card:nth-child(12),
+  .card:nth-child(13),
+  .card:nth-child(14),
+  .card:nth-child(15),
+  .card:nth-child(16),
   .card:nth-child(17),
   .card:nth-child(18),
   .card:nth-child(19),
   .card:nth-child(20){
         display: none;
   }
+  section > div:first-child p{
+    display: block;
+}
   .search{
       display: flex;
+  }
+  .products{
+    margin: 50px;
   }
   .product-card{
     display: flex;
@@ -837,29 +859,30 @@ section  button{
   }
   .cards{
     grid-template-columns:  repeat(auto-fit, minmax(8rem, 1fr));
-    margin-bottom: 50px;
+    grid-gap: 2%;
+    margin-bottom: 80px;
   }
   .card{
-    height: 210px;
+    height: 200px;
   }
   .card:hover{
     transform: scale(1.03);
   }
   .card > div:first-child{
-    height: 80%;
+    height: 76%;
     border-radius: 6px;
   }
-  /* .card > div:first-child > img{
+  .card > div:first-child > img{
     padding: 7px;
     display: block;
-  } */
+  }
   .card > div:first-child a:last-child{
     display: none;
   }
-  /* .card > div:first-child span{
+  .card > div:first-child span{
     top: 13px;
     right: 13px;
-  } */
+  }
   .card > div:last-child > small{
     display: inline-block;
     margin: 0 auto;
@@ -875,17 +898,22 @@ section  button{
     display: none;
   }
   form.block{
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
+    position: relative;
+    top: 0; left: 0;
+    transform: translate(0);
+    /* transform: translate(-50%, -50%); */
     width: 90%;
   }
   form.signUp{
-    position: absolute;
-    left: 5%;
-    top: 50%; 
-    transform: translate(-5%, -50%);
+    position: relative;
+    left: 0;
+    top: 0; 
+    transform: translate(0);
+    /* transform: translate(-5%, -50%); */
     width: 93%;
   }
-  
+  .slick-slide {
+    margin: 5px 10px;
+    padding: 0 auto;
+  }
 }    

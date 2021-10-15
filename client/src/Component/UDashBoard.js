@@ -7,7 +7,9 @@ import { useDispatch, useSelector } from "react-redux"
 import { useState, useEffect } from 'react';
 import Categories from './Categories';
 import Header from './Header';
+import { useHistory } from "react-router"
 import { Link } from "react-router-dom"
+import { logout } from "../redux/action/userAction";
 
 
 function UDashBoard(){
@@ -19,6 +21,7 @@ function UDashBoard(){
     }, [dispatch])
 
     var user = useSelector(state => state.user.user)
+    var history = useHistory()
 
     function handleClick(){
         if(showCategory === 'none'){
@@ -35,8 +38,8 @@ function UDashBoard(){
             <StyledBody>
             <SideBar>
                 <Breadcrums>
-                <li><Link to="/">Homepage</Link></li>
-                <li><Link to="" className="active">Dashboard</Link></li>
+                    <li><Link to="/">Homepage</Link></li>
+                    <li><Link to="" className="active">Dashboard</Link></li>
                 </Breadcrums>
                 <h2>Dashboard</h2>
                 <Menu view='user' active='dashboard'/>
@@ -44,7 +47,7 @@ function UDashBoard(){
             <MainContent>
                 <div>
                     <p>
-                        <strong>Hello Agbo Francis(not Francis.Agbo?) <a href="#">Log out</a></strong>
+                        <strong>Hello {user.lastName} {user.firstName}(not <span style={{color: "#d72691"}}>{user.lastName}.{user.firstName}</span>?) <p onClick={() => dispatch(logout(history))}>Log out</p></strong>
                     </p>
                     <p>
                         you can view your recent orders, manage billing address and edit your password and account details.

@@ -1,6 +1,5 @@
 import axios from 'axios'
 import { getError, clearError } from './erroAction'
-import { useHistory } from 'react-router'
 
 export function loadUser(){
     return function(dispatch, getState){

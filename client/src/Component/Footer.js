@@ -3,6 +3,7 @@ import verve from '../img/Verve-Logo-750x396.png'
 import master from '../img/master card.png'
 import interswitch from '../img/interswitch.png'
 import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 function Footer(){
     return(
@@ -37,9 +38,9 @@ function Footer(){
           <div>
             <p><strong> Social Media</strong></p>
             <div class="icon">
-              <a href="#"><FaFacebookF style={{color: "white"}}/></a>
-              <a href="#"><FaInstagram  style={{color: "white"}}/></a>
-              <a href="#"><FaTwitter  style={{color: "white"}}/></a>
+              <Link href="#"><FaFacebookF style={{color: "white"}}/></Link>
+              <Link href="#"><FaInstagram  style={{color: "white"}}/></Link>
+              <Link href="#"><FaTwitter  style={{color: "white"}}/></Link>
             </div>
           </div>
           <div className="payment">

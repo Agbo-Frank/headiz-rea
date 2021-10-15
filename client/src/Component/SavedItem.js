@@ -21,7 +21,7 @@ function SavedItem(){
     useEffect(() => {
         dispatch(loadUser())
         dispatch(getSavedItem(history))
-    }, [])
+    }, [dispatch, history])
 
     var items = useSelector(state => state.savedItem.items)
     var user = useSelector(state => state.user.user)

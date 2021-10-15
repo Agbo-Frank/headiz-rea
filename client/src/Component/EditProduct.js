@@ -163,7 +163,7 @@ function EditProduct(){
                         <div style={{flex: "30%"}}>
                             <DropZoneD>
                                 {file ?<Image cloudName="agbofrank" publicId={file}/>:<div className="drop-prompt">
-                                    <img src={insertImg}/>
+                                    <img src={insertImg} alt='image'/>
                                     <p>Drop your image here or 
                                         <label htmlFor="myfile">
                                             browse

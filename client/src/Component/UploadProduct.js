@@ -128,8 +128,8 @@ function UploadProduct(){
                     </div>
                     <div style={{flex: "30%"}}>
                         <DropZoneD>
-                            {file ?<img src={file} />:<div className="drop-prompt">
-                                <img src={insertImg}/>
+                            {file ?<img src={file} alt="uploaded"/>:<div className="drop-prompt">
+                                <img src={insertImg} alt="upload"/>
                                 <p>Drop your image here or 
                                     <label htmlFor="myfile">
                                         browse

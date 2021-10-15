@@ -39,7 +39,7 @@ module.exports.getVendorsOrder = (req, res) => {
     var userId = req.vendor.id
     Product.find({ userId })
       .then(item => {
-          Order.find({ itemId: item.map(i => i.itemId)})
+          Order.find({ itemId: item.map(i => i._id)})
             .then(order => res.status(200).json({ order }))
             .catch(err => res.status(400).json({ err }))
       })

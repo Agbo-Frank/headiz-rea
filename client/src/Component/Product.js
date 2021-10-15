@@ -10,7 +10,6 @@ import {Image} from 'cloudinary-react';
 import { getItem, getProduct } from '../redux/action/productAction'
 import { useSelector, useDispatch } from 'react-redux';
 import { addToCart } from '../redux/action/cartAction'
-import { loadUser } from "../redux/action/userAction"
 import Carousel from "./Carousel"
 
 function Product(){
@@ -23,13 +22,14 @@ function Product(){
     useEffect(() => {
         dispatch(getProduct())
         dispatch(getItem(id))
-    }, [dispatch])
+    }, [dispatch, id])
     var item = useSelector(state => state.product.item)
     var items = useSelector(state => state.product.items)
     var user = useSelector(state => state.user.user)
     var loading = useSelector(state => state.product.loading)
+    var quantity = 1
 
-    const [quantity, setQuantity] = useState()
+    const [quantities, setQuantities] = useState()
 
     function handleClick(){
         if(showCategory === 'none'){
@@ -95,8 +95,8 @@ function Product(){
                         <input
                         type="number" 
                         placeholder="Quanlity"
-                        value={ quantity }
-                        onChange={(e) => setQuantity(e.target.value)}/>
+                        value={ quantities }
+                        onChange={(e) => setQuantities(e.target.value)}/>
                         <button onClick={() => {
                             user ? 
                             dispatch(addToCart(item._id, item.price, item.category, quantity, item.file_id, item.name)) :
@@ -107,8 +107,8 @@ function Product(){
             </div>
             <div className="products">
                 <div className="text">
-                    <strong>Hair Care Products</strong>
-                    <p>View All &rarr;</p>
+                    <strong>Related Products</strong>
+                    <p onClick={() => history.push(`/products/${item.category}`)}>View All &rarr;</p>
                 </div>
                 <Carousel items={items} user={user}/>
             </div>

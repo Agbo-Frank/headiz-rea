@@ -4,7 +4,6 @@ import { StyleInput,InputGroup, PasswordInput, FormButton, Form, } from "./style
 import { MdVisibility, MdVisibilityOff } from "react-icons/md";
 import { useState } from "react";
 import { useHistory } from "react-router";
-import Categories from './Categories';
 import Header from './Header';
 import { useDispatch,useSelector } from "react-redux";
 import { registerVendor } from '../redux/action/userAction'
@@ -68,7 +67,7 @@ function VSignUp() {
                 <SideBar>
                     <Breadcrums>
                         <li><Link to="/">Homepage</Link></li>
-                        <li><a href="account" className="active">Account</a></li>
+                        <li><Link href="account" className="active">Account</Link></li>
                     </Breadcrums>
                     <h2>Sign Up</h2>
                 </SideBar>

@@ -4,14 +4,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getVOrder } from '../redux/action/orderAction'
 import Menu from './Menu'
 import Header from './Header';
-import { MainContent, SideBarD, StyledBodyD, Table } from './styles/StyledBody'
+import { MainContent, SideBarD, StyledBodyD } from './styles/StyledBody'
 
 function MyDoughnut(){
   var dispatch = useDispatch()
   useEffect(() => {
     dispatch(getVOrder())
   }, [dispatch])
-  var orders = useSelector(state => state.order.items)
   const state = {
     labels: ['Active Orders', 'Paid Transaction', 'Canceled Transaction'],
     datasets: [
@@ -84,17 +83,6 @@ function Card ({title, value}){
     </div>
   )
 }
-function display(date){
-        var date = new Date(date)
-        var dateArr = date.toUTCString().split(' ')
-        var newDate  = `${dateArr[1]} ${dateArr[2]} ${dateArr[3]}`
-        return newDate
-}
-
-function displayId(id){
-  var id = id.slice(0, 6)
-  return `${id}...`
-}
 
 export default function Dashboard(){
   var dispatch = useDispatch()
@@ -104,6 +92,22 @@ export default function Dashboard(){
 
   var orders = useSelector(state => state.order.items)
   var user = useSelector(state => state.user.user)
+
+  var totalSales = orders.reduce((total, order) => {
+    return total + (order.price * order.quantity)
+  }, 0) 
+
+  function display(date){
+    var d = new Date(date)
+    var dateArr = d.toUTCString().split(' ')
+    var newDate  = `${dateArr[1]} ${dateArr[2]} ${dateArr[3]}`
+    return newDate
+}
+
+  function displayId(id){
+    var i = id.slice(0, 6)
+    return `${i}...`
+  }
     return(
         <>
         <Header user={user}/>
@@ -118,8 +122,8 @@ export default function Dashboard(){
             <div className="cards">
                 <Card title="Page Reviews" value="20"/>
                 <Card title="Recent Orders" value="4"/>
-                <Card title="Total Sales" value="400,000"/>
-                <Card title="Total Produc" value="10"/>
+                <Card title="Total Sales" value={ totalSales }/>
+                <Card title="Total Product" value="10"/>
             </div>
             <div className="charts">
               <div className="chart">

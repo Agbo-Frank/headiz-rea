@@ -17,7 +17,7 @@ function Cart(){
 
     useEffect(() => {
         dispatch(getCartItem(history))
-    }, [dispatch])
+    }, [dispatch, history])
 
     var user = useSelector(state => state.user.user)
     var loading = useSelector(state => state.user.loading)

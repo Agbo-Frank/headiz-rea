@@ -10,16 +10,24 @@ import { Image } from 'cloudinary-react';
 function Order(){
     var dispatch = useDispatch()
     var history = useHistory()
+
     useEffect(() => {
         dispatch(getOrder(history))
-    }, [dispatch])
+    }, [dispatch, history])
+
     var orders = useSelector(state => state.order.items)
+
     function display(date){
-        var date = new Date(date)
-        var dateArr = date.toUTCString().split(' ')
+        var d = new Date(date)
+        var dateArr = d.toUTCString().split(' ')
         var newDate  = `${dateArr[1]} ${dateArr[2]} ${dateArr[3]}`
         return newDate
     }
+
+    function displayId(id){
+        var i = id.slice(0, 8)
+        return `${i}...`
+      }
     return(
         <StyledBody>
             <SideBar>
@@ -39,7 +47,7 @@ function Order(){
                             <Image cloudName="agbofrank" publicId={order.file_id}/>
                                 <div class="text">
                                 <strong>{ order.name }</strong><br/>
-                                <small>order no: {order._id}</small>
+                                <small>order no: {displayId(order._id)}</small>
                                 <div>
                                     <p>${ order.price }</p>
                                     <p>{ display(order.date) }</p>

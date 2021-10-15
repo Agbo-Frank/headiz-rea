@@ -9,23 +9,26 @@ import { useHistory } from "react-router";
 
 function Successfull(){
     var [showCategory, setShowCategory] = useState('none')
+    var [toggleMenu, setToggleMenu] = useState('')
 
     var history = useHistory()
      
     function handleClick(){
         if(showCategory === 'none'){
             setShowCategory('block')
+            setToggleMenu(':checked')
         }
-        else(
+        else{
             setShowCategory('none')
-        )
+            setToggleMenu('')
+        }
     }
 
     var user = useSelector(state => state.user.user)
     return(
         <>
-            <Header displayCategories={handleClick} user={user}/>
-            <Categories display={showCategory} user={user}/>
+            <Header displayCategories={handleClick} toggle={ toggleMenu } user={user}/>
+            <Categories display={showCategory} displayCategories={handleClick} user={user}/>
             <Block>
                 <img src={img} alt=""/>
                 <h3>Your Order is Complete!</h3>

@@ -14,6 +14,8 @@ import Carousel from "./Carousel"
 
 function Product(){
     var [showCategory, setShowCategory] = useState('none')
+    var [toggleMenu, setToggleMenu] = useState('')
+    
     var dispatch = useDispatch()
     var history = useHistory()
 
@@ -34,16 +36,18 @@ function Product(){
     function handleClick(){
         if(showCategory === 'none'){
             setShowCategory('block')
+            setToggleMenu(':checked')
         }
-        else(
+        else{
             setShowCategory('none')
-        )
+            setToggleMenu('')
+        }   
     }
 
     return(
         <>
-            <Header user={user} displayCategories={handleClick}/>
-            <Categories display={showCategory} user={user}/>
+            <Header displayCategories={handleClick} toggle={ toggleMenu } user={user}/>
+            <Categories display={showCategory} displayCategories={handleClick} user={user}/>
        { 
             loading ? 
             <div>Loading...</div> :

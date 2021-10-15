@@ -10,7 +10,8 @@ function Contact(){
     const [email, setEmail] = useState('')
     const [name, setName] = useState('')
     const [message, setMessage] = useState('')
-        var [showCategory, setShowCategory] = useState('none')
+    var [showCategory, setShowCategory] = useState('none')
+    var [toggleMenu, setToggleMenu] = useState('')
 
     var dispatch = useDispatch()
 
@@ -23,16 +24,18 @@ function Contact(){
     function handleClick(){
         if(showCategory === 'none'){
             setShowCategory('block')
+            setToggleMenu(':checked')
         }
-        else(
+        else{
             setShowCategory('none')
-        )
+            setToggleMenu('')
+        }
     }
 
     return(
         <>
-            <Header displayCategories={handleClick} user={user}/>
-            <Categories display={showCategory} user={user}/>
+             <Header displayCategories={handleClick} toggle={ toggleMenu } user={user}/>
+            <Categories display={showCategory} displayCategories={handleClick} user={user}/>
             <StyledBody>
                 <SideBar>
                     <Breadcrums>

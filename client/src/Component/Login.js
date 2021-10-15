@@ -14,6 +14,7 @@ function Login() {
     const [pw, setPw] = useState('password')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    var [toggleMenu, setToggleMenu] = useState('')
 
     var dispatch = useDispatch()
     var history = useHistory()
@@ -44,15 +45,17 @@ function Login() {
     function handleClick(){
         if(showCategory === 'none'){
             setShowCategory('block')
+            setToggleMenu(':checked')
         }
-        else(
+        else{
             setShowCategory('none')
-        )
+            setToggleMenu('')
+        }
     }
     return(
         <>
-            <Header displayCategories={handleClick} user={user}/>
-            <Categories display={showCategory} user={user}/>
+                        <Header displayCategories={handleClick} toggle={ toggleMenu } user={user}/>
+            <Categories display={showCategory} displayCategories={handleClick} user={user}/>
             <StyledBody>
                 <SideBar>
                     <Breadcrums>

@@ -29,16 +29,20 @@ export const StyledHeader = styled.header`
         margin-right: 10px;
         transition: all 0.5s ease;
     }
-    > input:checked + label .menu-bar > div:first-child{
-        transform: rotate(45deg) translate(5px, 6px);
-    }
-    > input:checked + label .menu-bar > div:nth-child(2){
-        transform: translateX(-15px);
-        opacity: 0;
-    }
-    > input:checked + label .menu-bar > div:last-child{
-       transform: rotate(-45deg) translate(4px, -5px);
-    }
+    ${({ toggle }) => {
+        if(toggle === ':checked'){
+            return `> input:checked + label .menu-bar > div:first-child{
+                transform: rotate(45deg) translate(5px, 6px);
+            }
+            > input:checked + label .menu-bar > div:nth-child(2){
+                transform: translateX(-15px);
+                opacity: 0;
+            }
+            > input:checked + label .menu-bar > div:last-child{
+               transform: rotate(-45deg) translate(4px, -5px);
+            `}
+        }
+    }}
 
     > div:last-child {
         flex: 80%;

@@ -296,7 +296,7 @@ section  button{
 }
 
 .products{
-  margin: 20px auto;
+  margin: 15px auto;
 }
 .products .text{
   display: flex;
@@ -755,7 +755,7 @@ section  button{
       display: flex;
   }
   .products{
-    margin: 50px auto;
+    margin: 10px auto;
   }
   .product-card{
     display: flex;

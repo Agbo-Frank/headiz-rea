@@ -50,6 +50,7 @@ export default function Products(){
     var { category } = useParams()
 
     var [showCategory, setShowCategory] = useState('none')
+    var [toggleMenu, setToggleMenu] = useState('')
     
     var user = useSelector(state => state.user.user)
     
@@ -66,16 +67,18 @@ export default function Products(){
     function handleClick(){
         if(showCategory === 'none'){
             setShowCategory('block')
+            setToggleMenu(':checked')
         }
-        else(
+        else{
             setShowCategory('none')
-        )
+            setToggleMenu('')
+        }
     }
 
     return(
         <>
-            <Header displayCategories={handleClick} user={user}/>
-            <Categories display={showCategory} user={user}/>
+            <Header displayCategories={handleClick} toggle={ toggleMenu } user={user}/>
+            <Categories display={showCategory} displayCategories={handleClick} user={user}/>
             <StyledBody>
                 <SideBar>
                     <Breadcrums>

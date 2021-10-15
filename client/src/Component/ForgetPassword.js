@@ -10,6 +10,7 @@ import Header from './Header';
 function ForgetPassword(){
     const [email, setEmail] = useState('')
     var [showCategory, setShowCategory] = useState('none')
+    var [toggleMenu, setToggleMenu] = useState('')
 
     var dispatch = useDispatch()
 
@@ -24,18 +25,20 @@ function ForgetPassword(){
     function handleClick(){
         if(showCategory === 'none'){
             setShowCategory('block')
+            setToggleMenu(':checked')
         }
-        else(
+        else{
             setShowCategory('none')
-        )
+            setToggleMenu('')
+        }
     }
 
     var error = useSelector(state => state.error.errorMsg)
     var user = useSelector(state => state.user.user)
     return(
         <>
-            <Header displayCategories={handleClick} user={user}/>
-            <Categories display={showCategory} user={user}/>
+            <Header displayCategories={handleClick} toggle={ toggleMenu } user={user}/>
+            <Categories display={showCategory} displayCategories={handleClick} user={user}/>
             <Block>
             <h3>Forgot Password?</h3>
              <small>Please enter your email address. you will receive a 

@@ -9,11 +9,11 @@ import img from '../img/IMG-20210720-WA0096.jpg'
 import { logout } from "../redux/action/userAction";
 
  
-function Header({displayCategories, user }){
+function Header({displayCategories, user, toggle }){
     var dispatch = useDispatch()
     var history = useHistory()
     return(
-        <StyledHeader>
+        <StyledHeader toggle={toggle}>
             <input type="checkbox" id="menu-bar"/>
             <label for="menu-bar">
                 <div class="menu-bar" onClick={displayCategories}>

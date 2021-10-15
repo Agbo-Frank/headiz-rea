@@ -21,13 +21,13 @@
 }  
     
 .search input{
-      width: 400px;
-      border: none;
-      outline: none;
+    width: 400px;
+    border: none;
+    outline: none;
 }
 
 .search input::placeholder{
-    color: black;
+    color: rgb(70, 46, 46);
 }
 
 form.block{
@@ -213,6 +213,7 @@ section > div:first-child{
   justify-content: space-between;
 }
 section > div:first-child > h3{
+  font-size: 20px;
   margin-bottom: 30px;
   text-align: center;
 }
@@ -296,13 +297,18 @@ section  button{
 }
 
 .products{
-  margin: 15px auto;
+  margin: 40px auto;
+  height: 300px;
+  overflow-y: hidden;
 }
 .products .text{
   display: flex;
   justify-content: space-between;
-  margin: 20px 0;
+  margin: 20px;
   user-select: none;
+}
+.products .text strong{
+  font-size: 22px;
 }
 .products .text p:last-child{
   display: flex;
@@ -617,7 +623,7 @@ section  button{
 }
 
 .slick-slide {
-  margin: 7px 20px;
+  margin: 3px 20px;
 }
 
 @media screen and (max-width: 1050px){
@@ -755,7 +761,12 @@ section  button{
       display: flex;
   }
   .products{
-    margin: 10px auto;
+    margin: 3px auto;
+    height: 300px;
+    overflow-y: hidden;
+  }
+  .products::-webkit-scrollbar{
+    display: none;
   }
   .product-card{
     display: flex;
@@ -912,6 +923,6 @@ section  button{
     width: 93%;
   }
   .slick-slide {
-    margin: 5px 10px;
+    margin: 2px 10px;
   }
 }    

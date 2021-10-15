@@ -296,7 +296,7 @@ section  button{
 }
 
 .products{
-  margin: 20px;
+  margin: 20px auto;
 }
 .products .text{
   display: flex;
@@ -618,7 +618,6 @@ section  button{
 
 .slick-slide {
   margin: 7px 20px;
-  padding: 0 auto;
 }
 
 @media screen and (max-width: 1050px){
@@ -756,7 +755,7 @@ section  button{
       display: flex;
   }
   .products{
-    margin: 50px;
+    margin: 50px auto;
   }
   .product-card{
     display: flex;
@@ -914,6 +913,5 @@ section  button{
   }
   .slick-slide {
     margin: 5px 10px;
-    padding: 0 auto;
   }
 }    

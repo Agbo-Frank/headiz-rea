@@ -308,6 +308,9 @@ section  button{
   height: 350px;
   overflow-y: hidden;
 }
+.products::-webkit-scrollbar{
+  display: none;
+}
 .products .text{
   display: flex;
   justify-content: space-between;

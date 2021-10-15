@@ -10,7 +10,7 @@ function Categories({display, displayCategories, user}){
     return(
         <StyledCategories display={display}>
             <ul>
-                {user && <li onClick = {displayCategories}><Link to="/DashBoard">DashBoard</Link></li>}
+                {user && <li onClick = {displayCategories}><Link to="/DashBoard">DASHBOARD</Link></li>}
                 <li onClick = {displayCategories}><Link to="/products/hairBundle">HAIR BUNDLE</Link></li>
                 <li onClick = {displayCategories}><Link to="/products/wig">WIGS</Link></li>
                 <li onClick = {displayCategories}><Link to="/products/f/c">FRONTALS & CLOSURE</Link></li>

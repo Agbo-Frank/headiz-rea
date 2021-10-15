@@ -65,16 +65,9 @@ export default function MySlider({ items }) {
       nextArrow: <Indicators />,
       prevArrow: <Indicators />
     };
-    const styles = {
-      position: "relative",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      width: "100%",
-    }
     return (
       <div>
-        <Slider {...settings} style={styles}>
+        <Slider {...settings} className="headizSlide">
           {
             items.map(item => (
               <div key={item._id}>

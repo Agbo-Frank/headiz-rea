@@ -10,7 +10,6 @@ import { BsHeart, BsHeartFill } from "react-icons/bs";
 import { addToSavedItem, removefromSavedItem } from '../redux/action/savedItemAction'
 import { addToCart } from '../redux/action/cartAction'
 import {Image} from 'cloudinary-react';
-// import { loadUser } from "../redux/action/userAction"
 import MySlider from "./MySlider"
 import { useState } from 'react';
 import Carousel from "./Carousel"
@@ -32,7 +31,7 @@ function Home(){
 
     var [showCategory, setShowCategory] = useState('none')
     var [toggleMenu, setToggleMenu] = useState('')
-    
+
     function handleClick(){
         if(showCategory === 'none'){
             setShowCategory('block')
@@ -46,15 +45,19 @@ function Home(){
 
     return(
         <>
-                        <Header displayCategories={handleClick} toggle={ toggleMenu } user={user}/>
+            <Header displayCategories={handleClick} toggle={ toggleMenu } user={user}/>
             <Categories display={showCategory} displayCategories={handleClick} user={user}/>
         {
             loading ?
             <div>loading...</div> :
             <div>
                 <div className="search">
-                    <FaSearch style={{color: "grey"}}/>
-                    <input type="search" placeholder="Search Product and categories..." />
+                    <FaSearch style={{
+                        color: "grey",
+                        fontSize: "20px",
+                        marginRight: "10px",
+                    }}/>
+                    <input type="search" placeholder="Search Product..." />
                 </div>
                 <MySlider items={items}/>
                 <section>

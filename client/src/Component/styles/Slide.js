@@ -68,8 +68,7 @@ export const StyledSlide = styled.div`
     @media screen and (max-width: 830px){
         border-radius: 15px;
         width: 80%;
-        margin: 0 auto 10px;
-        padding: 20px;
+        margin: 0 auto;
         height: 40vh;
 
         > div{

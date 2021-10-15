@@ -109,7 +109,7 @@ export default function Carousel({items, user}) {
     };
     return (
       <div>
-        <Slider {...settings}>
+        <Slider {...settings} style={{height: "100%"}}>
             {
                 items.map(item => (
                     <div key={item._id}>

@@ -33,7 +33,7 @@ export const SideBar = styled.div`
         padding: 4px 50px 4px 2px;
         border-bottom: 1px solid #f0f0f0;
         text-transform: capitalize;
-        font-size: 18px;
+        font-size: 20px;
     }
 
     @media screen and (max-width: 830px){
